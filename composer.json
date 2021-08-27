@@ -1,0 +1,16 @@
+{
+    "name": "isaac/slim-poc",
+    "description": "testing slim",
+    "autoload": {
+        "psr-4": {
+            "Isaac\\SlimPoc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Isaac Colls",
+            "email": "colls_isaac@hotmail.com"
+        }
+    ],
+    "require": {}
+}
