@@ -3,7 +3,7 @@
     "description": "testing slim",
     "autoload": {
         "psr-4": {
-            "Isaac\\SlimPoc\\": "src/"
+            "App\\": "app/"
         }
     },
     "authors": [
