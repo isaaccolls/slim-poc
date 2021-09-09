@@ -12,5 +12,14 @@
             "email": "colls_isaac@hotmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.4",
+        "php-di/php-di": "^6.3",
+        "php-di/slim-bridge": "^3.1",
+        "respect/validation": "^2.2",
+        "tuupola/slim-jwt-auth": "^3.5",
+        "firebase/php-jwt": "^5.4",
+        "illuminate/database": "^8.60"
+    }
 }
