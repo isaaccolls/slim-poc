@@ -28,7 +28,7 @@ class GuestEntryController
   public function createGuest(Request $request, Response $response)
   {
     $this->guestEntry->create([
-      'full_name' => CustomRequestHandler::getParam($request, 'name'),
+      'full_name' => CustomRequestHandler::getParam($request, 'full_name'),
       'email' => CustomRequestHandler::getParam($request, 'email'),
       'comment' => CustomRequestHandler::getParam($request, 'comment')
     ]);

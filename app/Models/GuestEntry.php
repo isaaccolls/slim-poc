@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GuestEntry extends Model
 {
-  protected $tabel = "guest_entry";
+  protected $table = "guest_entry";
   protected $fillable = ["full_name", "email", "comment"];
 }
