@@ -2,6 +2,7 @@
 $database_config = [
   'driver' => 'mysql',
   'host' => '127.0.0.1',
+  'port' => '3306',
   'database' => 'slim-poc',
   'username' => 'api',
   'password' => '1234',
@@ -10,7 +11,7 @@ $database_config = [
   'prefix' => '',
 ];
 
-$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule = new Illuminate\Database\Capsule\Manager;
 $capsule->addConnection($database_config);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
