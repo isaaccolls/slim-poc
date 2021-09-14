@@ -50,4 +50,37 @@ class GuestEntryController
     $responseMessage = "guest entry data created successfully";
     return $this->customResponse->is200Response($response, $responseMessage);
   }
+
+  public function viewGuests(Response $response)
+  {
+    $guestEntries = $this->guestEntry->get();
+    return $this->customResponse->is200Response($response, $guestEntries);
+  }
+
+  public function editGuest(Request $request, Response $response, $id)
+  {
+    $this->validator->validate($request, [
+      "full_name" => v::notEmpty(),
+      "email" => v::notEmpty()->email(),
+      "comment" => v::notEmpty(),
+    ]);
+    if ($this->validator->failed()) {
+      $responseMessage = $this->validator->errors;
+      return $this->customResponse->is400Response($response, $responseMessage);
+    }
+    $this->guestEntry->where(["id" => $id])->update([
+      'full_name' => CustomRequestHandler::getParam($request, 'full_name'),
+      'email' => CustomRequestHandler::getParam($request, 'email'),
+      'comment' => CustomRequestHandler::getParam($request, 'comment')
+    ]);
+    $responseMessage = "user was edited succesfully";
+    return $this->customResponse->is200Response($response, $responseMessage);
+  }
+
+  public function deleteGuest(Response $response, $id)
+  {
+    $this->guestEntry->where(["id" => $id])->delete();
+    $responseMessage = "guest deleted successfully";
+    return $this->customResponse->is200Response($response, $responseMessage);
+  }
 }
