@@ -1,7 +1,7 @@
 <?php
 $database_config = [
   'driver' => 'mysql',
-  'host' => '127.0.0.1',
+  'host' => 'mysql',
   'port' => '3306',
   'database' => 'slim-poc',
   'username' => 'api',
