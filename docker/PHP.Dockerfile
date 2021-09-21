@@ -1,4 +1,8 @@
 FROM php:fpm
-RUN docker-php-ext-install pdo pdo_mysql
+
+RUN apt-get -y update
+RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.org/composer.phar
+RUN chmod 755 /usr/local/bin/composer
+RUN apt-get install -y git
+RUN docker-php-ext-install pdo_mysql mysqli
 RUN pecl install xdebug && docker-php-ext-enable xdebug
-# if you make any changes to the PHP.Dockerfile in future, you'll need to manually rebuild it by running the command docker-compose build

@@ -1,0 +1,37 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/:/etc/nginx/conf.d
+    depends_on:
+      - php-fpm
+  php-fpm:
+    build:
+      context: ./docker
+      dockerfile: PHP.Dockerfile
+    links:
+      - mysql
+    environment:
+      - PHP_FPM_ENABLE=1
+      - PHP_FPM_SERVER_ADDR=php
+      - PHP_FPM_SERVER_PORT=9000
+      - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
+    volumes:
+      - ./:/var/www/html
+  mysql:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "root_secret"
+      MYSQL_USER: "api"
+      MYSQL_PASSWORD: "1234"
+      MYSQL_DATABASE: "slim-poc"
+    volumes:
+      - my-data:/var/lib/mysql
+volumes:
+  my-data: {}

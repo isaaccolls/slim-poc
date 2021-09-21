@@ -8,7 +8,7 @@ return function (App $app) {
   $app->addRoutingMiddleware();
   $app->addMiddleware(
     new \Tuupola\Middleware\JwtAuthentication([
-      "ignore" => ["/auth/login", "/auth/register"],
+      "ignore" => ["/auth/login", "/auth/register", "/health"],
       "secret" => SecretKeyInterface::JWT_SECRET_KEY,
       "error" => function ($response, $arguments) {
         $data["success"] = false;
